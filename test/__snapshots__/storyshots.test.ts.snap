@@ -703,3 +703,12 @@ exports[`Storyshots Spinner Regular 1`] = `
   />
 </div>
 `;
+
+exports[`Storyshots Textarea Autosize Regular 1`] = `
+<div>
+  <textarea
+    className="undefined"
+    onInput={[Function]}
+  />
+</div>
+`;
