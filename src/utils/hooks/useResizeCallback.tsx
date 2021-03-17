@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import ResizeObserver from 'resize-observer-polyfill'
+import { useEffect } from 'react';
+import ResizeObserver from 'resize-observer-polyfill';
 
-export const useResizeCallback = (
+const useResizeCallback = (
   ref: React.RefObject<any>,
-  callback: ((instance: any | null) => void)
-) => {
+  callback: (instance: any | null) => void,
+): void => {
   useEffect(() => {
     if (!ref.current) {
       return;
@@ -22,6 +22,6 @@ export const useResizeCallback = (
       observer.disconnect();
     };
   }, [ref, callback]);
-
-  return;
 };
+
+export default useResizeCallback;

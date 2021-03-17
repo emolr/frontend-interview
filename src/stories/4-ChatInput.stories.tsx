@@ -8,7 +8,7 @@ export const regular: React.FC = () => (
       placeholder={text('Placeholder', 'How can we help you today?')}
       maxRows={number('Max rows', 4)}
       rows={number('Rows', 2)}
-      />
+    />
   </div>
 );
 

@@ -1,25 +1,22 @@
 import classNames from 'classnames';
-import TextareaAutosize, { Props as TextareaAutosizeProps } from '../textarea-autosize'
-import React, { FC } from 'react'
+import React, { FC } from 'react';
+import TextareaAutosize, {
+  Props as TextareaAutosizeProps,
+} from '../textarea-autosize';
 
 import styles from './chat-input.module.scss';
 
-export interface Props extends TextareaAutosizeProps {}
+export type Props = TextareaAutosizeProps;
 
-export const ChatInput: FC<Props> = React.forwardRef(({className, ...rest}, ref) => {
+const ChatInput: FC<Props> = React.forwardRef(({ className, ...rest }, ref) => {
   const rootClass = classNames(
     {
-      [styles.root]: true
+      [styles.root]: true,
     },
-    className
+    className,
   );
 
-  return (
-    <TextareaAutosize
-      {...rest}
-      className={rootClass}
-      ref={ref} />
-  )
-})
+  return <TextareaAutosize {...rest} className={rootClass} ref={ref} />;
+});
 
-export default ChatInput
+export default ChatInput;

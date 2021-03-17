@@ -1,12 +1,10 @@
 import React from 'react';
 import { number, withKnobs } from '@storybook/addon-knobs';
-import { TextareaAutosize } from '../components/textarea-autosize';
+import TextareaAutosize from '../components/textarea-autosize';
 
 export const regular: React.FC = () => (
   <div>
-    <TextareaAutosize
-      placeholder="Enter text and see it expand..."
-    />
+    <TextareaAutosize placeholder="Enter text and see it expand..." />
   </div>
 );
 
@@ -28,20 +26,21 @@ export const customStyle: React.FC = () => (
       style={{
         fontSize: '22px',
         lineHeight: 1.5,
-        borderWidth: '4px'
-      }} />
+        borderWidth: '4px',
+      }}
+    />
   </div>
 );
 
 export const autosizeOnResize: React.FC = () => {
   return (
-    <div style={{ resize: 'horizontal', overflow: 'auto'}}>
+    <div style={{ resize: 'horizontal', overflow: 'auto' }}>
       <TextareaAutosize
         defaultValue="Hi devs at dixa, I hope you enjoy this autosizing textarea! Psst. It recalculate if the size of it changes."
         style={{ width: '100%' }}
       />
     </div>
-  )
+  );
 };
 
 export default {

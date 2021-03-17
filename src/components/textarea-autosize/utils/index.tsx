@@ -1,4 +1,8 @@
-export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?: number }) => {
+const resizeTextarea = (
+  target: HTMLTextAreaElement,
+  options: { maxRows?: number },
+): void => {
+  /* eslint-disable no-param-reassign */
   if (typeof window === 'undefined') {
     return;
   }
@@ -7,17 +11,19 @@ export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?:
   const cachedHeight = parseFloat(target.style.height);
 
   // Clear height to measure the true scrollHeight
-  target.style.height = "";
+  target.style.height = '';
 
   const computedStyle = window.getComputedStyle(target);
 
   // Calculate the height not included in scrollHeight
   // (only works with box-sizing: border-box)
   const borderTopWidth = Math.round(parseFloat(computedStyle.borderTopWidth));
-  const borderBottomWidth = Math.round(parseFloat(computedStyle.borderBottomWidth));
+  const borderBottomWidth = Math.round(
+    parseFloat(computedStyle.borderBottomWidth),
+  );
   const heightOffset = borderTopWidth + borderBottomWidth;
 
-  const scrollHeight = target.scrollHeight;
+  const { scrollHeight } = target;
   const desiredHeight = scrollHeight + heightOffset;
 
   // Caclulate max height if maxRows are set
@@ -29,7 +35,7 @@ export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?:
     currentRows = target.rows;
     target.rows = 1;
     currentValue = target.value;
-    target.value = ('\r\n').repeat(options.maxRows > 0 ? options.maxRows - 1 : 0)
+    target.value = '\r\n'.repeat(options.maxRows > 0 ? options.maxRows - 1 : 0);
     maxHeight = target.scrollHeight + heightOffset;
 
     // Set values back
@@ -38,10 +44,17 @@ export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?:
   }
 
   // If the calculated height is different, updated the height
-  if ((maxHeight && maxHeight !== desiredHeight) || desiredHeight !== cachedHeight) {
+  if (
+    (maxHeight && maxHeight !== desiredHeight) ||
+    desiredHeight !== cachedHeight
+  ) {
     const isMax = maxHeight ? desiredHeight > maxHeight : false;
-    target.style.height = isMax ? maxHeight + 'px' : desiredHeight + "px";
+    target.style.height = isMax ? `${maxHeight}px` : `${desiredHeight}px`;
   } else {
-    target.style.height = cachedHeight + 'px';
+    target.style.height = `${cachedHeight}px`;
   }
+  /* eslint-enable no-param-reassign */
 };
+
+export { resizeTextarea };
+export default resizeTextarea;
