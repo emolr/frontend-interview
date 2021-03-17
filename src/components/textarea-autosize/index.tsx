@@ -41,7 +41,7 @@ const TextareaAutosize: FC<Props> = React.forwardRef(
 
     // Resize if the DOM node changes size
     useResizeCallback(textareaRef, (textarea) =>
-      resizeTextarea(textarea, {
+      resizeTextarea(textarea as HTMLTextAreaElement, {
         maxRows,
       }),
     );
