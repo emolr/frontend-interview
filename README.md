@@ -7,7 +7,7 @@
 ### The project
 I've chose to make a new component to showcase my knowledge of React and the browsers, but also to show my understanding of working on components for a design system.
 
-Because Dixa is customers service software I made an textarea that resizes it's height automatically that could be used in eg. chat applications.
+Because your product is customers service software I made an textarea that resizes it's height automatically that could be used in eg. chat applications.
 
 ### Component: TextareaAutosize
 * [TextareaAutosize](./src/components/textarea-autosize)
