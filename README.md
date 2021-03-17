@@ -10,8 +10,8 @@ I've chose to make a new component to showcase my knowledge of React and the bro
 Because Dixa is customers service software I made an textarea that resizes it's height automatically that could be used in eg. chat applications.
 
 ### Component: TextareaAutosize
-* [TextareaAutosize](./components/textarea-autosize)
-* [ChatInput](./components/chat-input)
+* [TextareaAutosize](./src/components/textarea-autosize)
+* [ChatInput](./src/components/chat-input)
 
 ### Some things that can be improved
 * Adding minimum row count
