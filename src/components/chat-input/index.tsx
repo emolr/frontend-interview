@@ -4,9 +4,7 @@ import React, { FC } from 'react'
 
 import styles from './chat-input.module.scss';
 
-export interface Props extends TextareaAutosizeProps {
-
-}
+export interface Props extends TextareaAutosizeProps {}
 
 export const ChatInput: FC<Props> = React.forwardRef(({className, ...rest}, ref) => {
   const rootClass = classNames(
