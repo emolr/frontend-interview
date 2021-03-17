@@ -13,6 +13,8 @@ Because your product is customers service software I made an textarea that resiz
 * [TextareaAutosize](./src/components/textarea-autosize)
 * [ChatInput](./src/components/chat-input)
 
+See it on live on [https://emolr.github.io/frontend-interview/](https://emolr.github.io/frontend-interview/)
+
 ### Some things that can be improved
 * Adding minimum row count
 * Support for `box-sizing: content-box`
