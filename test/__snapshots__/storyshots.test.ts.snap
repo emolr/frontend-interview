@@ -658,6 +658,17 @@ exports[`Storyshots Chart Regular 1`] = `
 </div>
 `;
 
+exports[`Storyshots Chat input Regular 1`] = `
+<div>
+  <textarea
+    className="undefined undefined"
+    onInput={[Function]}
+    placeholder="How can we help you today?"
+    rows={2}
+  />
+</div>
+`;
+
 exports[`Storyshots Spinner Regular 1`] = `
 <div
   style={
@@ -704,11 +715,62 @@ exports[`Storyshots Spinner Regular 1`] = `
 </div>
 `;
 
+exports[`Storyshots Textarea Autosize Autosize On Resize 1`] = `
+<div
+  style={
+    Object {
+      "overflow": "auto",
+      "resize": "horizontal",
+    }
+  }
+>
+  <textarea
+    className="undefined"
+    defaultValue="Hi devs at dixa, I hope you enjoy this autosizing textarea! Psst. It recalculate if the size of it changes."
+    onInput={[Function]}
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Textarea Autosize Custom Style 1`] = `
+<div>
+  <textarea
+    className="undefined"
+    onInput={[Function]}
+    placeholder="Custom style..."
+    style={
+      Object {
+        "borderWidth": "4px",
+        "fontSize": "22px",
+        "lineHeight": 1.5,
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Storyshots Textarea Autosize Max Rows 1`] = `
+<div>
+  <textarea
+    className="undefined"
+    onInput={[Function]}
+    placeholder="Change max rows in knobs..."
+    rows={2}
+  />
+</div>
+`;
+
 exports[`Storyshots Textarea Autosize Regular 1`] = `
 <div>
   <textarea
     className="undefined"
     onInput={[Function]}
+    placeholder="Enter text and see it expand..."
   />
 </div>
 `;

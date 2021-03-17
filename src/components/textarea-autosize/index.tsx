@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FC, FormEvent, TextareaHTMLAttributes, useEffect, useRef } from 'react';
+import React, { FC, FormEvent, Ref, TextareaHTMLAttributes, useEffect, useRef } from 'react';
 import { useForkRef } from '../../utils/hooks/useForkRef';
 import { useResizeCallback } from '../../utils/hooks/useResizeCallback';
 import { resizeTextarea } from './utils';
@@ -8,9 +8,10 @@ import styles from './textarea-autosize.module.scss';
 
 export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   maxRows?: number;
+  ref?: Ref<unknown>
 }
 
-export const TextareaAutosize: FC<Props> = React.forwardRef(({ value, maxRows, onInput, className, ...rest }, ref) => {
+export const TextareaAutosize: FC<Props> = React.forwardRef(({ maxRows, onInput, className, ...rest }, ref) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const handleRefs = useForkRef(textareaRef, ref);
 
@@ -28,7 +29,7 @@ export const TextareaAutosize: FC<Props> = React.forwardRef(({ value, maxRows, o
         maxRows: maxRows
       });
     }
-  }, [textareaRef, value, maxRows]);
+  }, [textareaRef, rest.value, maxRows]);
 
   // Resize if the DOM node changes size
   useResizeCallback(textareaRef, (textarea) => resizeTextarea(textarea, {

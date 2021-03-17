@@ -29,7 +29,7 @@ export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?:
     currentRows = target.rows;
     target.rows = 1;
     currentValue = target.value;
-    target.value = ('\r\n').repeat(options.maxRows - 1)
+    target.value = ('\r\n').repeat(options.maxRows > 0 ? options.maxRows - 1 : 0)
     maxHeight = target.scrollHeight + heightOffset;
 
     // Set values back

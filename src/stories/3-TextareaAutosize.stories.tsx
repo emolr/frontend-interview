@@ -4,7 +4,9 @@ import { TextareaAutosize } from '../components/textarea-autosize';
 
 export const regular: React.FC = () => (
   <div>
-    <TextareaAutosize placeholder="Enter text and see it expand..." />
+    <TextareaAutosize
+      placeholder="Enter text and see it expand..."
+    />
   </div>
 );
 
@@ -30,6 +32,17 @@ export const customStyle: React.FC = () => (
       }} />
   </div>
 );
+
+export const autosizeOnResize: React.FC = () => {
+  return (
+    <div style={{ resize: 'horizontal', overflow: 'auto'}}>
+      <TextareaAutosize
+        defaultValue="Hi devs at dixa, I hope you enjoy this autosizing textarea! Psst. It recalculate if the size of it changes."
+        style={{ width: '100%' }}
+      />
+    </div>
+  )
+};
 
 export default {
   title: 'Textarea Autosize',
