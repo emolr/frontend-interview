@@ -1,4 +1,4 @@
-export const resizeTextarea = (target: HTMLTextAreaElement) => {
+export const resizeTextarea = (target: HTMLTextAreaElement, options: { maxRows?: number }) => {
   if (typeof window === 'undefined') {
     return;
   }
@@ -18,10 +18,29 @@ export const resizeTextarea = (target: HTMLTextAreaElement) => {
   const heightOffset = borderTopWidth + borderBottomWidth;
 
   const scrollHeight = target.scrollHeight;
+  const desiredHeight = scrollHeight + heightOffset;
+
+  // Caclulate max height if maxRows are set
+  let currentValue: string | null = null;
+  let currentRows: number | null = null;
+  let maxHeight: number | null = null;
+
+  if (options?.maxRows || options?.maxRows === 0) {
+    currentRows = target.rows;
+    target.rows = 1;
+    currentValue = target.value;
+    target.value = ('\r\n').repeat(options.maxRows - 1)
+    maxHeight = target.scrollHeight + heightOffset;
+
+    // Set values back
+    target.value = currentValue;
+    target.rows = currentRows;
+  }
 
   // If the calculated height is different, updated the height
-  if (scrollHeight + heightOffset !== cachedHeight) {
-    target.style.height = scrollHeight + heightOffset + "px";
+  if ((maxHeight && maxHeight !== desiredHeight) || desiredHeight !== cachedHeight) {
+    const isMax = maxHeight ? desiredHeight > maxHeight : false;
+    target.style.height = isMax ? maxHeight + 'px' : desiredHeight + "px";
   } else {
     target.style.height = cachedHeight + 'px';
   }
