@@ -1,32 +1,32 @@
 import { useMemo } from 'react';
-
+/* eslint-disable @typescript-eslint/indent */
 export function setRef<T>(
   ref:
-  | React.MutableRefObject<T | null>
-  | ((instance: T | null) => void)
-  | null
-  | undefined,
+    | React.MutableRefObject<T | null>
+    | ((instance: T | null) => void)
+    | null
+    | undefined,
   value: T | null,
 ): void {
-  /* eslint-disable no-param-reassign */
   if (typeof ref === 'function') {
     ref(value);
   } else if (ref) {
+    // eslint-disable-next-line no-param-reassign
     ref.current = value;
   }
-  /* eslint-enable no-param-reassign */
 }
+/* eslint-enable @typescript-eslint/indent */
 
 const useForkRef = (
   refA: React.Ref<unknown>,
   refB: React.Ref<unknown>,
-): any => {
+): ((refValue: unknown) => void) | undefined => {
   return useMemo(() => {
     if (refA === null && refB === null) {
-      return;
+      return (): void => {};
     }
 
-    return (refValue: any) => {
+    return (refValue: unknown): void => {
       setRef(refA, refValue);
       setRef(refB, refValue);
     };

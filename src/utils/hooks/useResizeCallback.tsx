@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const useResizeCallback = (
-  ref: React.RefObject<any>,
-  callback: (instance: any | null) => void,
+  ref: React.RefObject<HTMLElement>,
+  callback: (instance: unknown | null) => void,
 ): void => {
   useEffect(() => {
     if (!ref.current) {
-      return;
+      return (): void => {};
     }
 
     const observer = new ResizeObserver(() => {
@@ -18,7 +18,7 @@ const useResizeCallback = (
 
     observer.observe(ref.current);
 
-    return () => {
+    return (): void => {
       observer.disconnect();
     };
   }, [ref, callback]);
