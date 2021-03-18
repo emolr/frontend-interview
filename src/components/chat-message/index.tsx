@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import React, { FC, forwardRef, HTMLAttributes, Ref } from 'react';
+import React, { FC, forwardRef, HTMLAttributes } from 'react';
 import styles from './chat-message.module.scss';
 
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   isPersonal?: boolean;
 }
 
-const ChatMessage: FC<Props> = forwardRef(
-  ({ isPersonal, className, children, ...rest }, ref: Ref<HTMLDivElement>) => {
+const ChatMessage = forwardRef<HTMLDivElement, Props>(
+  ({ isPersonal, className, children, ...rest }, ref) => {
     const rootClass = classNames(
       {
         [styles.root]: true,

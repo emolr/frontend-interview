@@ -18,7 +18,7 @@ export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   ref?: Ref<unknown>;
 }
 
-const TextareaAutosize: FC<Props> = React.forwardRef(
+const TextareaAutosize = React.forwardRef<HTMLTextAreaElement, Props>(
   ({ maxRows, onInput, className, ...rest }, ref) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const handleRefs = useForkRef(textareaRef, ref);

@@ -8,7 +8,7 @@ import styles from './chat-input.module.scss';
 
 export type Props = TextareaAutosizeProps;
 
-const ChatInput: FC<Props> = React.forwardRef(({ className, ...rest }, ref) => {
+const ChatInput= React.forwardRef<HTMLTextAreaElement, Props>(({ className, ...rest }, ref) => {
   const rootClass = classNames(
     {
       [styles.root]: true,
