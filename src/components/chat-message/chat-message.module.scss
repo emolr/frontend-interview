@@ -1,0 +1,52 @@
+@import '../../styles/import';
+
+.root {
+  $chat-message-background-color: $grey-7 !global;
+  $chat-message-color: $dixa-black !global;
+  $chat-message-personal-background-color: $dixa-blue !global;
+  $chat-message-personal-color: #fff !global;
+  $chat-message-arrow-size: 24px !global;
+
+  &Personal {
+    $isPersonal: & !global;
+  }
+
+  padding-bottom: $chat-message-arrow-size
+}
+
+.message {
+  position: relative;
+  padding: $spacing-4;
+  font-family: $font-family-body;
+  font-size: $font-size-body;
+  border-radius: $dixa-border-radius;
+  background-color: $chat-message-background-color;
+  color: $chat-message-color;
+
+  #{$isPersonal} & {
+    background-color: $chat-message-personal-background-color;
+    color: $chat-message-personal-color;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: calc(100% - #{$dixa-border-radius});
+  left: 0;
+  width: $chat-message-arrow-size;
+  height: auto;
+
+  & > path {
+    fill: $chat-message-background-color;
+  }
+
+  #{$isPersonal} & {
+    left: auto;
+    right: 0;
+    transform: scaleX(-1);
+
+    & > path {
+      fill: $chat-message-personal-background-color;
+    }
+  }
+}
