@@ -5,8 +5,8 @@ import React, {
   useLayoutEffect,
   useRef,
 } from 'react';
-import useForkRef from '../../utils/hooks/useForkRef';
-import useResizeCallback from '../../utils/hooks/useResizeCallback';
+import useForkRef from '../../hooks/useForkRef';
+import useResizeCallback from '../../hooks/useResizeCallback';
 import resizeTextarea from './resize-textarea';
 
 import styles from './textarea-autosize.module.scss';
