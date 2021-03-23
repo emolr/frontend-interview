@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const useResizeCallback = (
-  ref: React.RefObject<HTMLElement>,
-  callback: (instance: unknown | null) => void,
+const useResizeCallback = <T extends HTMLElement>(
+  ref: React.RefObject<T>,
+  callback: (instance: T | null) => void,
 ): void => {
   useEffect(() => {
     if (!ref.current) {

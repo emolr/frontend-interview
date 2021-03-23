@@ -56,5 +56,4 @@ const resizeTextarea = (
   /* eslint-enable no-param-reassign */
 };
 
-export { resizeTextarea };
 export default resizeTextarea;

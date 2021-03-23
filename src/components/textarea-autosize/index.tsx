@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import React, {
   FormEvent,
   TextareaHTMLAttributes,
-  useEffect,
+  useLayoutEffect,
   useRef,
 } from 'react';
 import useForkRef from '../../utils/hooks/useForkRef';
 import useResizeCallback from '../../utils/hooks/useResizeCallback';
-import { resizeTextarea } from './utils';
+import resizeTextarea from './resize-textarea';
 
 import styles from './textarea-autosize.module.scss';
 
@@ -27,7 +27,7 @@ const TextareaAutosize = React.forwardRef<HTMLTextAreaElement, Props>(
       className,
     );
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       // Resize if textarea has value on init
       if (textareaRef.current) {
         resizeTextarea(textareaRef.current, {
@@ -37,10 +37,15 @@ const TextareaAutosize = React.forwardRef<HTMLTextAreaElement, Props>(
     }, [textareaRef, rest.value, maxRows]);
 
     // Resize if the DOM node changes size
-    useResizeCallback(textareaRef, (textarea) =>
-      resizeTextarea(textarea as HTMLTextAreaElement, {
-        maxRows,
-      }),
+    useResizeCallback<HTMLTextAreaElement>(textareaRef, (textarea) => {
+        if (!textarea) {
+          return;
+        }
+
+        resizeTextarea(textarea, {
+          maxRows,
+        })
+      }
     );
 
     const handleOnInput = (event: FormEvent<HTMLTextAreaElement>): void => {
